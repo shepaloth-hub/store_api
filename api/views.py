@@ -6,8 +6,6 @@ from django.db import transaction
 from .models import Product, Order, OrderItem, Review
 from .serializers import ProductSerializer, OrderSerializer, ReviewSerializer
 
-
-
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductSerializer
@@ -61,6 +59,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
         order.total_price = total_price
         order.save()
+
 
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all().order_by('-created_at')
